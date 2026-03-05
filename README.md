@@ -19,7 +19,7 @@ The goal is to meet the requirements of the CS6232 Group Project by creating a f
 
 - Lonnie Fentress – lfentre1@my.westga.edu – GitHub: @lfentress-UWG
 - Khashayar Haghighi – khaghig1@my.westga.edu – GitHub: @khashayar-h
-- Sergei Pozdeev – spozdee1@my.westga.edu – GitHub: TBD 
+- Sergei Pozdeev – spozdee1@my.westga.edu – GitHub: @reking06 
 - Instructor: Dr. Lei Yang – lyang@westga.edu – GitHub: @lyanguwg
 
 ## Project Elements
