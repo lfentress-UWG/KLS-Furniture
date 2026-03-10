@@ -24,20 +24,20 @@ The goal is to meet the requirements of the CS6232 Group Project by creating a f
 
 ## Project Elements
 
-Detailed documentation is maintained on the GitHub Wiki - https://github.com/lfentress-UWG/KLS-Furniture/wiki
+Detailed documentation is maintained on the [GitHub Wiki](https://github.com/lfentress-UWG/KLS-Furniture/wiki)
 
 - Product Backlog (PDF) – Prioritized user stories in Agile format
-- Initial Mockups (PDF)] – Sketches/wireframes of the application UI
-- Database Relational Schema (PDF)] – ERD
+- Initial Mockups (PDF) – Sketches/wireframes of the application UI
+- Database Relational Schema (PDF) – ERD
 
 
 ## Getting Started
 
 - Instructions coming soon
 
-Current planned tech stack (tentative):
-- Language: C# (.NET WinForms)
-- Database: SQL Server
+## Tech Stack
+- Frontend: C# .NET WinForms
+- Backend/Database: SQL Server
 
 ## Contributing
 
