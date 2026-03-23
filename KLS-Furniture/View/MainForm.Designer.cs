@@ -31,6 +31,7 @@
             this.HeaderPanel = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.navUserControl1 = new KLS_Furniture.UserControls.NavUserControl();
+            this.ContentPanel = new System.Windows.Forms.Panel();
             this.HeaderPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,12 +62,20 @@
             this.navUserControl1.Size = new System.Drawing.Size(161, 526);
             this.navUserControl1.TabIndex = 0;
             // 
+            // ContentPanel
+            // 
+            this.ContentPanel.Location = new System.Drawing.Point(179, 66);
+            this.ContentPanel.Name = "ContentPanel";
+            this.ContentPanel.Size = new System.Drawing.Size(635, 526);
+            this.ContentPanel.TabIndex = 2;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(826, 604);
+            this.Controls.Add(this.ContentPanel);
             this.Controls.Add(this.HeaderPanel);
             this.Controls.Add(this.navUserControl1);
             this.Name = "MainForm";
@@ -83,6 +92,7 @@
         private UserControls.NavUserControl navUserControl1;
         private System.Windows.Forms.Panel HeaderPanel;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel ContentPanel;
     }
 }
 
