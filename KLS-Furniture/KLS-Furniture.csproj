@@ -63,6 +63,12 @@
   <ItemGroup>
     <Compile Include="Controller\KSL_Controller.cs" />
     <Compile Include="DAL\KLS_DAL.cs" />
+    <Compile Include="UserControls\MemberDetailsUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\MemberDetailsUserControl.Designer.cs">
+      <DependentUpon>MemberDetailsUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\MemberManageUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -93,6 +99,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserControls\MemberDetailsUserControl.resx">
+      <DependentUpon>MemberDetailsUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\MemberManageUserControl.resx">
       <DependentUpon>MemberManageUserControl.cs</DependentUpon>
     </EmbeddedResource>

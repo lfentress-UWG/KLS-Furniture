@@ -28,54 +28,68 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.MemberMangeTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.MemberManageLabel = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.memberDetailsUserControl1 = new KLS_Furniture.UserControls.MemberDetailsUserControl();
+            this.MemberMangeTableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tableLayoutPanel1
+            // MemberMangeTableLayoutPanel
             // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.MemberManageLabel, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 4;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(628, 494);
-            this.tableLayoutPanel1.TabIndex = 0;
+            this.MemberMangeTableLayoutPanel.ColumnCount = 1;
+            this.MemberMangeTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.MemberMangeTableLayoutPanel.Controls.Add(this.MemberManageLabel, 0, 0);
+            this.MemberMangeTableLayoutPanel.Controls.Add(this.memberDetailsUserControl1, 0, 3);
+            this.MemberMangeTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MemberMangeTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this.MemberMangeTableLayoutPanel.Name = "MemberMangeTableLayoutPanel";
+            this.MemberMangeTableLayoutPanel.RowCount = 4;
+            this.MemberMangeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.MemberMangeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 24.64146F));
+            this.MemberMangeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 36.897F));
+            this.MemberMangeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 38.33116F));
+            this.MemberMangeTableLayoutPanel.Size = new System.Drawing.Size(790, 803);
+            this.MemberMangeTableLayoutPanel.TabIndex = 0;
             // 
             // MemberManageLabel
             // 
             this.MemberManageLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.MemberManageLabel.AutoSize = true;
             this.MemberManageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MemberManageLabel.Location = new System.Drawing.Point(3, 15);
+            this.MemberManageLabel.Location = new System.Drawing.Point(3, 5);
             this.MemberManageLabel.Name = "MemberManageLabel";
             this.MemberManageLabel.Size = new System.Drawing.Size(188, 20);
             this.MemberManageLabel.TabIndex = 0;
             this.MemberManageLabel.Text = "Member Management";
             this.MemberManageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // memberDetailsUserControl1
+            // 
+            this.memberDetailsUserControl1.AutoSize = true;
+            this.memberDetailsUserControl1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.memberDetailsUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.memberDetailsUserControl1.Location = new System.Drawing.Point(3, 508);
+            this.memberDetailsUserControl1.Name = "memberDetailsUserControl1";
+            this.memberDetailsUserControl1.Size = new System.Drawing.Size(784, 292);
+            this.memberDetailsUserControl1.TabIndex = 1;
+            // 
             // MemberManageUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.MemberMangeTableLayoutPanel);
             this.Name = "MemberManageUserControl";
-            this.Size = new System.Drawing.Size(634, 500);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
+            this.Size = new System.Drawing.Size(790, 803);
+            this.MemberMangeTableLayoutPanel.ResumeLayout(false);
+            this.MemberMangeTableLayoutPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel MemberMangeTableLayoutPanel;
         private System.Windows.Forms.Label MemberManageLabel;
+        private MemberDetailsUserControl memberDetailsUserControl1;
     }
 }
