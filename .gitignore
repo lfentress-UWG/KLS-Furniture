@@ -416,3 +416,5 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+/KLS-Furniture/obj/Debug/KLS-Furniture.csproj.AssemblyReference.cache
+/KLS-Furniture/obj/Release/KLS-Furniture.csproj.AssemblyReference.cache
