@@ -1,59 +1,88 @@
-﻿using System;
+﻿using KLS_Furniture.UserControls;
+using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace KLS_Furniture
 {
     public partial class MainForm : Form
     {
+        //Creates instance of user controls to be used in Content Panel
+        private readonly MemberManageUserControl memberManageUserControl = new MemberManageUserControl();
+
+        private UserControl currentScreen;
+
         public MainForm()
         {
             InitializeComponent();
 
+            //Add user controls to content panel
+            this.ContentPanel.Controls.Add(memberManageUserControl);
+
+            //Will need to hide additional panels when added
+            foreach (Control control in ContentPanel.Controls)
+            {
+                control.Visible = false;
+            }
+
             // Link navigation events to correct form initialization
             navUserControl1.MemberManagementClicked += Nav_MemberManagementClicked;
             navUserControl1.FurnitureRentalClicked += Nav_FurnitureRentalClicked;
-            navUserControl1.ReturnsClicked += NavUserControl1_ReturnsClicked;
+            navUserControl1.ReturnsClicked += Nav_ReturnClicked;
             navUserControl1.MemberHistoryClicked += Nav_MemberHistoryClicked;
             navUserControl1.AdminReportsClicked += Nav_AdminReportsClicked;
 
             //Set first tab as active
             navUserControl1.SetActiveTab("membermanagement");
-            //Will call Member Management form as starting form
+            //Calls Member Management as starting content
+            this.ShowContent(memberManageUserControl);
         }
 
-        private void NavUserControl1_AdminReportsClicked(object sender, EventArgs e)
+        //Updates Content Panel to selected screen
+        private void ShowContent(UserControl selection)
         {
-            throw new NotImplementedException();
-        }
+            if (currentScreen != null)
+            {
+                currentScreen.Visible = false;
+            }
 
-        private void NavUserControl1_ReturnsClicked(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
+            selection.Visible = true;
+            selection.BringToFront();
+            currentScreen = selection;
         }
 
         private void Nav_MemberManagementClicked(object sender, EventArgs e)
         {
-            //Will load form
+            navUserControl1.SetActiveTab("membermanagement");
+            this.ShowContent(memberManageUserControl);
         }
 
         private void Nav_FurnitureRentalClicked(object sender, EventArgs e)
         {
-            //Will load form
+            navUserControl1.SetActiveTab("furniturerental");
+            // Todo: Update with correct user control
+            //this.ShowContent(); 
         }
 
         private void Nav_ReturnClicked(object sender, EventArgs e)
         {
-            //Will load form
+            navUserControl1.SetActiveTab("returns");
+            // Todo: Update with correct user control
+            //this.ShowContent();
         }
 
         private void Nav_MemberHistoryClicked(object sender, EventArgs e)
         {
-            //Will load form
+            navUserControl1.SetActiveTab("memberhistory");
+            // Todo: Update with correct user control
+            //this.ShowContent();
         }
 
         private void Nav_AdminReportsClicked(object sender, EventArgs e)
         {
-            //Will load form
+            navUserControl1.SetActiveTab("adminreports");
+            // Todo: Update with correct user control
+            //this.ShowContent();
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KLS_Furniture.Model
 {
-    internal class Customer
+    internal class Member
     {
     }
 }
