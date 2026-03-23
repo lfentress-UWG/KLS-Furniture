@@ -63,6 +63,15 @@
   <ItemGroup>
     <Compile Include="Controller\KSL_Controller.cs" />
     <Compile Include="DAL\KLS_DAL.cs" />
+    <Compile Include="Model\Entities\Employee.cs" />
+    <Compile Include="Model\Entities\Furniture.cs" />
+    <Compile Include="Model\Entities\FurnitureCategory.cs" />
+    <Compile Include="Model\Entities\FurnitureStyle.cs" />
+    <Compile Include="Model\Entities\Member.cs" />
+    <Compile Include="Model\Entities\RentalTransaction.cs" />
+    <Compile Include="Model\Entities\RentalTransactionItem.cs" />
+    <Compile Include="Model\Entities\ReturnTransaction.cs" />
+    <Compile Include="Model\Entities\ReturnTransactionItem.cs" />
     <Compile Include="UserControls\MemberDetailsUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -146,6 +155,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Model\Lookups\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
