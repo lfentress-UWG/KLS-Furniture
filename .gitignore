@@ -699,9 +699,9 @@ ServiceFabricBackup/
 *.rptproj.bak
 
 # SQL Server files
-*.mdf
-*.ldf
-*.ndf
+#*.mdf
+#*.ldf
+#*.ndf
 
 # Business Intelligence projects
 *.rdl.data
@@ -839,6 +839,3 @@ FodyWeavers.xsd
 *.msp
 /KLS-Furniture/obj/Debug/KLS-Furniture.csproj.AssemblyReference.cache
 /KLS-Furniture/obj/Release/KLS-Furniture.csproj.AssemblyReference.cache
-
-!KLS-Furniture/KLS-Furniture/App_Data/KLSFurniture.mdf
-!KLS-Furniture/KLS-Furniture/App_Data/KLSFurniture_log.ldf
