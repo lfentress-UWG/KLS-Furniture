@@ -81,6 +81,8 @@
     <Compile Include="UserControls\NavUserControl.Designer.cs">
       <DependentUpon>NavUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\State.cs" />
+    <Compile Include="Utils\US_States.cs" />
     <Compile Include="View\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

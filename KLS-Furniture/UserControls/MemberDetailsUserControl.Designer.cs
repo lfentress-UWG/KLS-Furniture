@@ -290,6 +290,7 @@
             this.AddMemberButton.TabIndex = 17;
             this.AddMemberButton.Text = "Add New";
             this.AddMemberButton.UseVisualStyleBackColor = false;
+            this.AddMemberButton.Click += new System.EventHandler(this.AddMemberButton_Click);
             // 
             // EditMemberButton
             // 
