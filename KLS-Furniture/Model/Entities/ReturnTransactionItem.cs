@@ -1,4 +1,4 @@
-﻿namespace KLSFurniture.Model.Entities
+﻿namespace KLS_Furniture.Model.Entities
 {
     /// <summary>
     /// Represents a return transaction item from the return_transaction_items table.

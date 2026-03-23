@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KLSFurniture.Model.Entities
+namespace KLS_Furniture.Model.Entities
 {
     /// <summary>
     /// Represents a return transaction from the return_transactions table.

@@ -1,4 +1,4 @@
-﻿namespace KLSFurniture.Model.Entities
+﻿namespace KLS_Furniture.Model.Entities
 {
     /// <summary>
     /// Represents a rental transaction item from the rental_transaction_items table.

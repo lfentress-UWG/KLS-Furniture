@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KLSFurniture.Model.Entities
+namespace KLS_Furniture.Model.Entities
 {
     /// <summary>
     /// Represents an employee from the employees table.

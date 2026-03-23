@@ -1,4 +1,4 @@
-﻿namespace KLSFurniture.Model.Entities
+﻿namespace KLS_Furniture.Model.Entities
 {
     /// <summary>
     /// Represents a furniture category from the furniture_categories table.
