@@ -29,6 +29,7 @@ namespace KLS_Furniture.UserControls
             this.PopulateGenderCombo();
             this.EditMemberButton.Enabled = false;
             this.SaveMemberButton.Enabled = false;
+            this.BindUpdateClears();
 
         }
 
@@ -188,6 +189,19 @@ namespace KLS_Furniture.UserControls
             this.GenderComboBox.SelectedIndex = -1;
             this.StateComboBox.SelectedIndex = -1;
         }
+
+        private void BindUpdateClears()
+        {
+            this.FirstNameTextBox.TextChanged += (s, e) => this.ClearLabels();
+            this.LastNameTextBox.TextChanged += (s, e) => this.ClearLabels();
+            this.PhoneTextBox.TextChanged += (s, e) => this.ClearLabels();
+            this.DOBTextBox.TextChanged += (s, e) => this.ClearLabels();
+            this.AddressTextBox.TextChanged += (s, e) => this.ClearLabels();
+            this.ZipTextBox.TextChanged += (s, e) => this.ClearLabels();
+            this.StateComboBox.SelectedValueChanged += (s, e) => this.ClearLabels();
+            this.GenderComboBox.SelectedValueChanged += (s, e) => this.ClearLabels();
+        }
+
         #endregion
 
         private bool Validate()
@@ -217,9 +231,9 @@ namespace KLS_Furniture.UserControls
             }
 
             // DOB
-            if (!DateTime.TryParse(this.DOBTextBox.Text, out DateTime dob))
+            if (!DateTime.TryParse(this.DOBTextBox.Text, out DateTime dob) || dob > DateTime.Today.AddYears(-18))
             {
-                this.DOBErrorLabel.Text = "Valid date of birth required";
+                this.DOBErrorLabel.Text = "Valid date of birth required (Must be 18+)";
                 isValid = false;
             }
 
