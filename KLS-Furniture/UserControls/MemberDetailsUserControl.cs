@@ -1,27 +1,63 @@
 ﻿using KLS_Furniture.Utils;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
+using KLS_Furniture.Model;
+
 
 namespace KLS_Furniture.UserControls
 {
+    /// <summary>
+    /// User control class that handles Member info add, edit, and display functionality
+    /// </summary>
     public partial class MemberDetailsUserControl : UserControl
     {
+        //Class variable that tracks edit vs new member function
+        private bool _isEdit = false;
+        //Class variable that track current member displayed
+        private int _currentMemberID = -1;
+
+        /// <summary>
+        /// Contructor of MemberDetailsUserControl Class
+        /// </summary>
         public MemberDetailsUserControl()
         {
             InitializeComponent();
             this.DisableAllFields();
             this.PopulateStateCombo();
             this.PopulateGenderCombo();
-            
+            this.EditMemberButton.Enabled = false;
+            this.SaveMemberButton.Enabled = false;
+
         }
+
+        /// <summary>
+        /// Loads member data but keeps everything disabled
+        /// Edit requires selecting Edit button
+        /// </summary>
+        /// <param name="member"> Member object to be displayed/edited</param>
+        public void DisplayMember(Member member)
+        {
+            this._isEdit = false;
+            this._currentMemberID = member.MemberID;
+
+            this.FirstNameTextBox.Text = member.FirstName;
+            this.LastNameTextBox.Text = member.LastName;
+            this.PhoneTextBox.Text = member.Phone;
+            this.DOBTextBox.Text = member.DateOfBirth.ToShortDateString();
+            this.GenderComboBox.SelectedValue = member.Sex;
+            this.AddressTextBox.Text = member.Address;
+            this.StateComboBox.SelectedValue = member.State;
+            this.ZipTextBox.Text = member.ZipCode;
+
+            this.DisableAllFields();
+            this.AddMemberButton.Enabled = true;
+            this.EditMemberButton.Enabled = true;
+            this.SaveMemberButton.Enabled = false;
+            this.MessageLabel.Text = "Member details loaded. Click Edit to update.";
+        }
+
         #region
         //Button response functions
         private void AddMemberButton_Click(object sender, EventArgs e)
@@ -29,12 +65,50 @@ namespace KLS_Furniture.UserControls
             this.ClearLabels();
             this.ClearInputs();
             this.EnableAllFields();
+            this.AddMemberButton.Enabled = false;
+            this.EditMemberButton.Enabled = false;
+            this.SaveMemberButton.Enabled = true;
+            this.MessageLabel.Text = "Click Save to complete member add.";
         }
+
+        private void EditMemberButton_Click(object sender, EventArgs e)
+        {
+            this._isEdit = true;
+            this.EnableAllFields();
+            this.AddMemberButton.Enabled = false;
+            this.EditMemberButton.Enabled = false;
+            this.SaveMemberButton.Enabled = true;
+            this.MessageLabel.Text = "Editing member, click Save to update.";
+        }
+
+        private void SaveMemberButton_Click(object sender, EventArgs e)
+        {
+            if (!this.Validate()) return;
+
+            //ToDo: Send info to controller for processing
+
+            this.ClearLabels();
+            this.ClearInputs();
+            this.MessageLabel.Text = _isEdit ? "Member updated successfully!" : "New member added successfully!";
+            this.DisableAllFields();
+            this.EditMemberButton.Enabled = true;
+            this.SaveMemberButton.Enabled = false;
+        }
+
         private void CancelMemberButton_Click(object sender, EventArgs e)
         {
             this.ClearLabels();
             this.ClearInputs();
             this.DisableAllFields();
+            this.AddMemberButton.Enabled = true;
+            this.SaveMemberButton.Enabled = false;
+            if (this._currentMemberID != -1)
+            {
+                this.EditMemberButton.Enabled = true;
+            } else
+            {
+                this.EditMemberButton.Enabled = false;
+            }
         }
         #endregion
 
@@ -185,6 +259,6 @@ namespace KLS_Furniture.UserControls
                 
             return isValid;
         }
-
+    
     }
 }

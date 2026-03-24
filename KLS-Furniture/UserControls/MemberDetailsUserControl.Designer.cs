@@ -304,6 +304,7 @@
             this.EditMemberButton.TabIndex = 18;
             this.EditMemberButton.Text = "Edit";
             this.EditMemberButton.UseVisualStyleBackColor = false;
+            this.EditMemberButton.Click += new System.EventHandler(this.EditMemberButton_Click);
             // 
             // SaveMemberButton
             // 
@@ -317,6 +318,7 @@
             this.SaveMemberButton.TabIndex = 19;
             this.SaveMemberButton.Text = "Save";
             this.SaveMemberButton.UseVisualStyleBackColor = false;
+            this.SaveMemberButton.Click += new System.EventHandler(this.SaveMemberButton_Click);
             // 
             // CancelMemberButton
             // 
