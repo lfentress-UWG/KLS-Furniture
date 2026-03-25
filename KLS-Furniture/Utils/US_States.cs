@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace KLS_Furniture.Utils
 {
+    /// <summary>
+    /// Util Class that gives list of US States with name and abbreviation
+    /// </summary>
     public class US_States
     {
         private static readonly List<State> _states = new List<State>
@@ -62,6 +65,10 @@ namespace KLS_Furniture.Utils
             new State { Abbreviation = "WY", Name = "Wyoming" }
         };
 
+        /// <summary>
+        /// Function to get all US states list 
+        /// </summary>
+        /// <returns>A list of all US states</returns>
         public static List<State> GetAll() => _states;
     }
 }

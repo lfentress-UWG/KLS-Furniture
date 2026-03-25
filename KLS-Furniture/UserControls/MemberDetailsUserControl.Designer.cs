@@ -304,6 +304,7 @@
             this.EditMemberButton.TabIndex = 18;
             this.EditMemberButton.Text = "Edit";
             this.EditMemberButton.UseVisualStyleBackColor = false;
+            this.EditMemberButton.Click += new System.EventHandler(this.EditMemberButton_Click);
             // 
             // SaveMemberButton
             // 
@@ -317,6 +318,7 @@
             this.SaveMemberButton.TabIndex = 19;
             this.SaveMemberButton.Text = "Save";
             this.SaveMemberButton.UseVisualStyleBackColor = false;
+            this.SaveMemberButton.Click += new System.EventHandler(this.SaveMemberButton_Click);
             // 
             // CancelMemberButton
             // 
@@ -330,12 +332,14 @@
             this.CancelMemberButton.TabIndex = 20;
             this.CancelMemberButton.Text = "Cancel";
             this.CancelMemberButton.UseVisualStyleBackColor = false;
+            this.CancelMemberButton.Click += new System.EventHandler(this.CancelMemberButton_Click);
             // 
             // FNameErrorLabel
             // 
             this.FNameErrorLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.FNameErrorLabel.AutoSize = true;
             this.tableLayoutPanel1.SetColumnSpan(this.FNameErrorLabel, 2);
+            this.FNameErrorLabel.ForeColor = System.Drawing.Color.Red;
             this.FNameErrorLabel.Location = new System.Drawing.Point(3, 57);
             this.FNameErrorLabel.Name = "FNameErrorLabel";
             this.FNameErrorLabel.Size = new System.Drawing.Size(249, 16);
@@ -347,6 +351,7 @@
             this.LNameErrorLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.LNameErrorLabel.AutoSize = true;
             this.tableLayoutPanel1.SetColumnSpan(this.LNameErrorLabel, 2);
+            this.LNameErrorLabel.ForeColor = System.Drawing.Color.Red;
             this.LNameErrorLabel.Location = new System.Drawing.Point(258, 57);
             this.LNameErrorLabel.Name = "LNameErrorLabel";
             this.LNameErrorLabel.Size = new System.Drawing.Size(248, 16);
@@ -358,6 +363,7 @@
             this.PhoneErrorLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.PhoneErrorLabel.AutoSize = true;
             this.tableLayoutPanel1.SetColumnSpan(this.PhoneErrorLabel, 2);
+            this.PhoneErrorLabel.ForeColor = System.Drawing.Color.Red;
             this.PhoneErrorLabel.Location = new System.Drawing.Point(3, 105);
             this.PhoneErrorLabel.Name = "PhoneErrorLabel";
             this.PhoneErrorLabel.Size = new System.Drawing.Size(249, 16);
@@ -369,6 +375,7 @@
             this.DOBErrorLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.DOBErrorLabel.AutoSize = true;
             this.tableLayoutPanel1.SetColumnSpan(this.DOBErrorLabel, 2);
+            this.DOBErrorLabel.ForeColor = System.Drawing.Color.Red;
             this.DOBErrorLabel.Location = new System.Drawing.Point(258, 105);
             this.DOBErrorLabel.Name = "DOBErrorLabel";
             this.DOBErrorLabel.Size = new System.Drawing.Size(248, 16);
@@ -380,6 +387,7 @@
             this.GenderErrorLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.GenderErrorLabel.AutoSize = true;
             this.tableLayoutPanel1.SetColumnSpan(this.GenderErrorLabel, 2);
+            this.GenderErrorLabel.ForeColor = System.Drawing.Color.Red;
             this.GenderErrorLabel.Location = new System.Drawing.Point(3, 153);
             this.GenderErrorLabel.Name = "GenderErrorLabel";
             this.GenderErrorLabel.Size = new System.Drawing.Size(249, 16);
@@ -391,6 +399,7 @@
             this.AddressErrorLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.AddressErrorLabel.AutoSize = true;
             this.tableLayoutPanel1.SetColumnSpan(this.AddressErrorLabel, 3);
+            this.AddressErrorLabel.ForeColor = System.Drawing.Color.Red;
             this.AddressErrorLabel.Location = new System.Drawing.Point(3, 201);
             this.AddressErrorLabel.Name = "AddressErrorLabel";
             this.AddressErrorLabel.Size = new System.Drawing.Size(345, 16);
@@ -402,6 +411,7 @@
             this.StateErrorLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.StateErrorLabel.AutoSize = true;
             this.tableLayoutPanel1.SetColumnSpan(this.StateErrorLabel, 2);
+            this.StateErrorLabel.ForeColor = System.Drawing.Color.Red;
             this.StateErrorLabel.Location = new System.Drawing.Point(3, 250);
             this.StateErrorLabel.Name = "StateErrorLabel";
             this.StateErrorLabel.Size = new System.Drawing.Size(249, 16);
@@ -413,6 +423,7 @@
             this.ZipErrorLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.ZipErrorLabel.AutoSize = true;
             this.tableLayoutPanel1.SetColumnSpan(this.ZipErrorLabel, 2);
+            this.ZipErrorLabel.ForeColor = System.Drawing.Color.Red;
             this.ZipErrorLabel.Location = new System.Drawing.Point(258, 250);
             this.ZipErrorLabel.Name = "ZipErrorLabel";
             this.ZipErrorLabel.Size = new System.Drawing.Size(248, 16);

@@ -5,6 +5,9 @@ using System.Windows.Forms;
 
 namespace KLS_Furniture
 {
+    /// <summary>
+    /// Class for Main Form of application that displays Navigation and Content
+    /// </summary>
     public partial class MainForm : Form
     {
         //Creates instance of user controls to be used in Content Panel
@@ -12,6 +15,9 @@ namespace KLS_Furniture
 
         private UserControl currentScreen;
 
+        /// <summary>
+        /// Constructor for MainForm class
+        /// </summary>
         public MainForm()
         {
             InitializeComponent();
