@@ -3,7 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using KLS_Furniture.Model;
+using KLS_Furniture.Model.Entities;
+using KLS_Furniture.Controller;
 
 
 namespace KLS_Furniture.UserControls
@@ -13,6 +14,7 @@ namespace KLS_Furniture.UserControls
     /// </summary>
     public partial class MemberDetailsUserControl : UserControl
     {
+        private readonly MemberManagementController _controller;
         //Class variable that tracks edit vs new member function
         private bool _isEdit = false;
         //Class variable that track current member displayed
@@ -24,6 +26,7 @@ namespace KLS_Furniture.UserControls
         public MemberDetailsUserControl()
         {
             InitializeComponent();
+            _controller = new MemberManagementController();
             this.DisableAllFields();
             this.PopulateStateCombo();
             this.PopulateGenderCombo();
@@ -41,14 +44,15 @@ namespace KLS_Furniture.UserControls
         public void DisplayMember(Member member)
         {
             this._isEdit = false;
-            this._currentMemberID = member.MemberID;
+            this._currentMemberID = member.MemberId;
 
             this.FirstNameTextBox.Text = member.FirstName;
             this.LastNameTextBox.Text = member.LastName;
             this.PhoneTextBox.Text = member.Phone;
             this.DOBTextBox.Text = member.DateOfBirth.ToShortDateString();
             this.GenderComboBox.SelectedValue = member.Sex;
-            this.AddressTextBox.Text = member.Address;
+            this.AddressTextBox.Text = member.AddressLine1;
+            this.AddLine2TextBox.Text = member.AddressLine2;
             this.StateComboBox.SelectedValue = member.State;
             this.ZipTextBox.Text = member.ZipCode;
 
@@ -84,16 +88,55 @@ namespace KLS_Furniture.UserControls
 
         private void SaveMemberButton_Click(object sender, EventArgs e)
         {
-            if (!this.Validate()) return;
+            if (!this.ValidateEntry()) return;
 
-            //ToDo: Send info to controller for processing
+            Member member = new Member
+            {
+                FirstName = this.FirstNameTextBox.Text.Trim(),
+                LastName = this.LastNameTextBox.Text.Trim(),
+                Phone = this.PhoneTextBox.Text.Trim(),
+                DateOfBirth = DateTime.Parse(this.DOBTextBox.Text),
+                Sex = this.GenderComboBox.SelectedValue?.ToString(),
+                AddressLine1 = this.AddressTextBox.Text.Trim(),
+                AddressLine2 = this.AddLine2TextBox.Text.Trim(),
+                City = this.CityTextBox.Text.Trim(),
+                State = this.StateComboBox.SelectedValue?.ToString(),
+                ZipCode = this.ZipTextBox.Text.Trim()
+            };
 
-            this.ClearLabels();
-            this.ClearInputs();
-            this.MessageLabel.Text = _isEdit ? "Member updated successfully!" : "New member added successfully!";
-            this.DisableAllFields();
-            this.EditMemberButton.Enabled = true;
-            this.SaveMemberButton.Enabled = false;
+            try
+            {
+                Member savedMember;
+                string message;
+
+                if (_isEdit)
+                {
+                    member.MemberId = _currentMemberID;
+                    // TODO: Implement Update Function
+                    // savedMember = _controller.UpdateMember(member);
+                    message = "Member updated successfully!";
+                }
+                else
+                {
+                    // ADD NEW MEMBER
+                    savedMember = _controller.AddMember(member);
+                    _currentMemberID = savedMember.MemberId;
+                    message = "New member added successfully!"; 
+                }
+                this.ClearLabels();
+                this.DisableAllFields();
+                MessageLabel.Text = message;
+                MessageLabel.ForeColor = Color.Green;
+                this.EditMemberButton.Enabled = true;
+                this.SaveMemberButton.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+                MessageLabel.Text = "Error saving member: " + ex.Message;
+                MessageLabel.ForeColor = Color.Red;
+            }
+
+            
         }
 
         private void CancelMemberButton_Click(object sender, EventArgs e)
@@ -150,6 +193,8 @@ namespace KLS_Furniture.UserControls
             this.ZipTextBox.Enabled = true;
             this.GenderComboBox.Enabled = true;
             this.StateComboBox.Enabled = true;
+            this.AddLine2TextBox.Enabled = true;
+            this.CityTextBox.Enabled = true;
         }
 
         private void DisableAllFields()
@@ -162,6 +207,8 @@ namespace KLS_Furniture.UserControls
             this.ZipTextBox.Enabled = false;
             this.GenderComboBox.Enabled = false;
             this.StateComboBox.Enabled = false;
+            this.AddLine2TextBox.Enabled = false;
+            this.CityTextBox.Enabled = false;
         }
 
         private void ClearLabels()
@@ -175,6 +222,7 @@ namespace KLS_Furniture.UserControls
             this.StateErrorLabel.Text = "";
             this.ZipErrorLabel.Text = "";
             this.MessageLabel.Text = "";
+            this.CityErrorLabel.Text = "";
             this.MessageLabel.ForeColor = System.Drawing.Color.Black;
         }
 
@@ -185,6 +233,8 @@ namespace KLS_Furniture.UserControls
             this.PhoneTextBox.Clear();
             this.DOBTextBox.Clear();
             this.AddressTextBox.Clear();
+            this.AddLine2TextBox.Clear();
+            this.CityTextBox.Clear();
             this.ZipTextBox.Clear();
             this.GenderComboBox.SelectedIndex = -1;
             this.StateComboBox.SelectedIndex = -1;
@@ -197,6 +247,8 @@ namespace KLS_Furniture.UserControls
             this.PhoneTextBox.TextChanged += (s, e) => this.ClearLabels();
             this.DOBTextBox.TextChanged += (s, e) => this.ClearLabels();
             this.AddressTextBox.TextChanged += (s, e) => this.ClearLabels();
+            this.AddLine2TextBox.TextChanged += (s, e) => this.ClearLabels();
+            this.CityTextBox.TextChanged += (s, e) => this.ClearLabels();
             this.ZipTextBox.TextChanged += (s, e) => this.ClearLabels();
             this.StateComboBox.SelectedValueChanged += (s, e) => this.ClearLabels();
             this.GenderComboBox.SelectedValueChanged += (s, e) => this.ClearLabels();
@@ -204,7 +256,7 @@ namespace KLS_Furniture.UserControls
 
         #endregion
 
-        private bool Validate()
+        private bool ValidateEntry()
         {
             bool isValid = true;
             this.ClearLabels();
@@ -248,6 +300,13 @@ namespace KLS_Furniture.UserControls
             if (string.IsNullOrWhiteSpace(this.AddressTextBox.Text))
             {
                 this.AddressErrorLabel.Text = "Address is required";
+                isValid = false;
+            }
+
+            // City
+            if (string.IsNullOrWhiteSpace(this.CityTextBox.Text))
+            {
+                this.CityErrorLabel.Text = "City is required";
                 isValid = false;
             }
 

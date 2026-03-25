@@ -85,8 +85,15 @@ namespace KLS_Furniture.DAL
         /// </summary>
         private string HashPasswordForComparison(string password)
         {
-            /// TODO
-            return password;
+            /// TODO: When ready to hash password 
+            return password;/// return BCrypt.Net.BCrypt.HashPassword(password, workFactor: 10);
         }
+
+        // Verifies valid password
+        //private bool VerifyPassword(string textPassword, string hashPassword)
+        //{
+        //    return BCrypt.Net.BCrypt.Verify(textPassword, hashPassword);
+        //}
+
     }
 }
