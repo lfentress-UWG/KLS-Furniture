@@ -1,10 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
+using KLS_Furniture.Controller;
+using KLS_Furniture.DAL;
+using KLS_Furniture.View;
 
-namespace KLS_Furniture
+namespace KLSFurniture
 {
     internal static class Program
     {
@@ -16,7 +17,46 @@ namespace KLS_Furniture
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+
+            Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
+            Application.ThreadException += OnUiThreadException;
+            AppDomain.CurrentDomain.UnhandledException += OnUnhandledException;
+
+            try
+            {
+                EmployeeDBDAL employeeDBDAL = new EmployeeDBDAL();
+                AuthController authController = new AuthController(employeeDBDAL);
+
+                Application.Run(new LoginForm(authController));
+            }
+            catch (Exception ex)
+            {
+                ShowFatalErrorAndExit(ex);
+            }
+        }
+
+        private static void OnUiThreadException(object sender, ThreadExceptionEventArgs e)
+        {
+            ShowFatalErrorAndExit(e.Exception);
+        }
+
+        private static void OnUnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            Exception ex = e.ExceptionObject as Exception
+                           ?? new Exception("A non-exception error was thrown by the runtime.");
+
+            ShowFatalErrorAndExit(ex);
+        }
+
+        private static void ShowFatalErrorAndExit(Exception ex)
+        {
+            MessageBox.Show(
+                "Unexpected error occurred. The application will close.\n\n" + ex.Message,
+                "Application Error",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+
+            Environment.Exit(1);
         }
     }
 }
