@@ -31,18 +31,21 @@
             this.HeaderPanel = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.ContentPanel = new System.Windows.Forms.Panel();
-            this.navUserControl1 = new KLS_Furniture.UserControls.NavUserControl();
             this.MainTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.LogoutButton = new System.Windows.Forms.Button();
+            this.UsernameLabel = new System.Windows.Forms.Label();
+            this.navUserControl1 = new KLS_Furniture.UserControls.NavUserControl();
+            this.NameLogoutTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.HeaderPanel.SuspendLayout();
             this.MainTableLayoutPanel.SuspendLayout();
+            this.NameLogoutTableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // HeaderPanel
             // 
             this.HeaderPanel.BackColor = System.Drawing.Color.LightSteelBlue;
             this.MainTableLayoutPanel.SetColumnSpan(this.HeaderPanel, 2);
-            this.HeaderPanel.Controls.Add(this.LogoutButton);
+            this.HeaderPanel.Controls.Add(this.NameLogoutTableLayoutPanel);
             this.HeaderPanel.Controls.Add(this.label1);
             this.HeaderPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.HeaderPanel.Location = new System.Drawing.Point(3, 3);
@@ -68,15 +71,6 @@
             this.ContentPanel.Size = new System.Drawing.Size(824, 816);
             this.ContentPanel.TabIndex = 2;
             // 
-            // navUserControl1
-            // 
-            this.navUserControl1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.navUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.navUserControl1.Location = new System.Drawing.Point(3, 62);
-            this.navUserControl1.Name = "navUserControl1";
-            this.navUserControl1.Size = new System.Drawing.Size(142, 816);
-            this.navUserControl1.TabIndex = 0;
-            // 
             // MainTableLayoutPanel
             // 
             this.MainTableLayoutPanel.ColumnCount = 2;
@@ -96,14 +90,49 @@
             // 
             // LogoutButton
             // 
+            this.LogoutButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.LogoutButton.BackColor = System.Drawing.Color.LightCoral;
-            this.LogoutButton.Location = new System.Drawing.Point(888, 9);
+            this.LogoutButton.Location = new System.Drawing.Point(150, 10);
             this.LogoutButton.Name = "LogoutButton";
             this.LogoutButton.Size = new System.Drawing.Size(75, 33);
             this.LogoutButton.TabIndex = 1;
             this.LogoutButton.Text = "Logout";
             this.LogoutButton.UseVisualStyleBackColor = false;
             this.LogoutButton.Click += new System.EventHandler(this.LogoutButton_Click);
+            // 
+            // UsernameLabel
+            // 
+            this.UsernameLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.UsernameLabel.AutoSize = true;
+            this.UsernameLabel.Location = new System.Drawing.Point(137, 18);
+            this.UsernameLabel.Margin = new System.Windows.Forms.Padding(3, 0, 10, 0);
+            this.UsernameLabel.Name = "UsernameLabel";
+            this.UsernameLabel.Size = new System.Drawing.Size(0, 16);
+            this.UsernameLabel.TabIndex = 2;
+            this.UsernameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // navUserControl1
+            // 
+            this.navUserControl1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.navUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.navUserControl1.Location = new System.Drawing.Point(3, 62);
+            this.navUserControl1.Name = "navUserControl1";
+            this.navUserControl1.Size = new System.Drawing.Size(142, 816);
+            this.navUserControl1.TabIndex = 0;
+            // 
+            // NameLogoutTableLayoutPanel
+            // 
+            this.NameLogoutTableLayoutPanel.ColumnCount = 2;
+            this.NameLogoutTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 63.91304F));
+            this.NameLogoutTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.08696F));
+            this.NameLogoutTableLayoutPanel.Controls.Add(this.LogoutButton, 1, 0);
+            this.NameLogoutTableLayoutPanel.Controls.Add(this.UsernameLabel, 0, 0);
+            this.NameLogoutTableLayoutPanel.Location = new System.Drawing.Point(739, 0);
+            this.NameLogoutTableLayoutPanel.Name = "NameLogoutTableLayoutPanel";
+            this.NameLogoutTableLayoutPanel.RowCount = 1;
+            this.NameLogoutTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.NameLogoutTableLayoutPanel.Size = new System.Drawing.Size(230, 53);
+            this.NameLogoutTableLayoutPanel.TabIndex = 3;
             // 
             // MainForm
             // 
@@ -118,6 +147,8 @@
             this.HeaderPanel.ResumeLayout(false);
             this.HeaderPanel.PerformLayout();
             this.MainTableLayoutPanel.ResumeLayout(false);
+            this.NameLogoutTableLayoutPanel.ResumeLayout(false);
+            this.NameLogoutTableLayoutPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -130,6 +161,8 @@
         private System.Windows.Forms.Panel ContentPanel;
         private System.Windows.Forms.TableLayoutPanel MainTableLayoutPanel;
         private System.Windows.Forms.Button LogoutButton;
+        private System.Windows.Forms.Label UsernameLabel;
+        private System.Windows.Forms.TableLayoutPanel NameLogoutTableLayoutPanel;
     }
 }
 

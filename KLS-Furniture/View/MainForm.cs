@@ -1,4 +1,6 @@
-﻿using KLS_Furniture.UserControls;
+﻿using KLS_Furniture.Controller;
+using KLS_Furniture.Model;
+using KLS_Furniture.UserControls;
 using KLS_Furniture.View;
 using System;
 using System.Drawing;
@@ -18,14 +20,18 @@ namespace KLS_Furniture
 
         private readonly LoginForm _loginForm;
         private bool _isLoggingOut = false;
+        private readonly AuthController _authController;
+
 
         /// <summary>
         /// Constructor for MainForm class
         /// </summary>
-        public MainForm(LoginForm loginForm = null)
+        public MainForm(LoginForm loginForm = null, AuthController authController = null)
         {
             InitializeComponent();
             _loginForm = loginForm;
+            _authController = authController;
+            this.UsernameLabel.Text = authController.GetLoggedInUserDisplayText();
 
             //Add user controls to content panel
             this.ContentPanel.Controls.Add(memberManageUserControl);
@@ -108,6 +114,7 @@ namespace KLS_Furniture
                 return;
             }
 
+            _authController.Logout();
             _isLoggingOut = true;
             this.Close();
 
@@ -123,16 +130,16 @@ namespace KLS_Furniture
             }
             if (e.CloseReason == CloseReason.UserClosing)
             {
-                var result = MessageBox.Show("Do you want to return to login? \nSelect No to close app.",
-                                             "Exit", MessageBoxButtons.YesNoCancel,
+                var result = MessageBox.Show("Are you sure you want to Exit?",
+                                             "Exit", MessageBoxButtons.YesNo,
                                              MessageBoxIcon.Question);
 
-                if (result == DialogResult.Cancel)
+                if (result == DialogResult.No)
                 {
                     e.Cancel = true;
                     return;
                 }
-                if (result == DialogResult.No)
+                if (result == DialogResult.Yes)
                 {
                     Application.Exit();
                     return;

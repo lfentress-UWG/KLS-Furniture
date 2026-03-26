@@ -38,7 +38,7 @@ namespace KLSFurniture
                         {
                             break;
                         }
-                        Application.Run(new MainForm(loginForm));
+                        Application.Run(new MainForm(loginForm, authController));
                     }
                 }
                 
