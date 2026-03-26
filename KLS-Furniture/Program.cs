@@ -1,9 +1,10 @@
-﻿using System;
-using System.Threading;
-using System.Windows.Forms;
+﻿using KLS_Furniture;
 using KLS_Furniture.Controller;
 using KLS_Furniture.DAL;
 using KLS_Furniture.View;
+using System;
+using System.Threading;
+using System.Windows.Forms;
 
 namespace KLSFurniture
 {
@@ -27,7 +28,20 @@ namespace KLSFurniture
                 EmployeeDBDAL employeeDBDAL = new EmployeeDBDAL();
                 AuthController authController = new AuthController(employeeDBDAL);
 
-                Application.Run(new LoginForm(authController));
+                while (true)
+                {
+                    using (LoginForm loginForm = new LoginForm(authController))
+                    {
+                        DialogResult result = loginForm.ShowDialog();
+
+                        if (result != DialogResult.OK)
+                        {
+                            break;
+                        }
+                        Application.Run(new MainForm(loginForm));
+                    }
+                }
+                
             }
             catch (Exception ex)
             {

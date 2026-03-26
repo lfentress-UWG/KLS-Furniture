@@ -73,18 +73,10 @@ namespace KLS_Furniture.View
                 return;
             }
 
-            if (mainForm == null || mainForm.IsDisposed)
-            {
-                // TODO - set contoller for main form
-                mainForm = new MainForm();
-                // TODO - set login form for main form
-                //mainForm.SetLoginForm(this);
-            }
-
             ResetLoginForm();
 
-            Hide();
-            mainForm.Show();
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
 
         private void ClearErrorMessage()
@@ -104,7 +96,6 @@ namespace KLS_Furniture.View
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            Application.Exit();
             base.OnFormClosing(e);
         }
 

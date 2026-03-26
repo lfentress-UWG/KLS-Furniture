@@ -33,6 +33,7 @@
             this.ContentPanel = new System.Windows.Forms.Panel();
             this.navUserControl1 = new KLS_Furniture.UserControls.NavUserControl();
             this.MainTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.LogoutButton = new System.Windows.Forms.Button();
             this.HeaderPanel.SuspendLayout();
             this.MainTableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
@@ -41,6 +42,7 @@
             // 
             this.HeaderPanel.BackColor = System.Drawing.Color.LightSteelBlue;
             this.MainTableLayoutPanel.SetColumnSpan(this.HeaderPanel, 2);
+            this.HeaderPanel.Controls.Add(this.LogoutButton);
             this.HeaderPanel.Controls.Add(this.label1);
             this.HeaderPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.HeaderPanel.Location = new System.Drawing.Point(3, 3);
@@ -92,6 +94,17 @@
             this.MainTableLayoutPanel.Size = new System.Drawing.Size(978, 881);
             this.MainTableLayoutPanel.TabIndex = 0;
             // 
+            // LogoutButton
+            // 
+            this.LogoutButton.BackColor = System.Drawing.Color.LightCoral;
+            this.LogoutButton.Location = new System.Drawing.Point(888, 9);
+            this.LogoutButton.Name = "LogoutButton";
+            this.LogoutButton.Size = new System.Drawing.Size(75, 33);
+            this.LogoutButton.TabIndex = 1;
+            this.LogoutButton.Text = "Logout";
+            this.LogoutButton.UseVisualStyleBackColor = false;
+            this.LogoutButton.Click += new System.EventHandler(this.LogoutButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -116,6 +129,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel ContentPanel;
         private System.Windows.Forms.TableLayoutPanel MainTableLayoutPanel;
+        private System.Windows.Forms.Button LogoutButton;
     }
 }
 

@@ -1,4 +1,5 @@
 ﻿using KLS_Furniture.UserControls;
+using KLS_Furniture.View;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -15,12 +16,16 @@ namespace KLS_Furniture
 
         private UserControl currentScreen;
 
+        private readonly LoginForm _loginForm;
+        private bool _isLoggingOut = false;
+
         /// <summary>
         /// Constructor for MainForm class
         /// </summary>
-        public MainForm()
+        public MainForm(LoginForm loginForm = null)
         {
             InitializeComponent();
+            _loginForm = loginForm;
 
             //Add user controls to content panel
             this.ContentPanel.Controls.Add(memberManageUserControl);
@@ -89,6 +94,51 @@ namespace KLS_Furniture
             navUserControl1.SetActiveTab("adminreports");
             // Todo: Update with correct user control
             //this.ShowContent();
+        }
+
+        private void LogoutButton_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure you want to log out?",
+                                    "KLS Furniture - Logout",
+                                    MessageBoxButtons.YesNo,
+                                    MessageBoxIcon.Question);
+
+            if (result != DialogResult.Yes)
+            {
+                return;
+            }
+
+            _isLoggingOut = true;
+            this.Close();
+
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            if (_isLoggingOut)
+            {
+                _isLoggingOut = false;
+                base.OnFormClosing(e);
+                return;
+            }
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                var result = MessageBox.Show("Do you want to return to login? \nSelect No to close app.",
+                                             "Exit", MessageBoxButtons.YesNoCancel,
+                                             MessageBoxIcon.Question);
+
+                if (result == DialogResult.Cancel)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+                if (result == DialogResult.No)
+                {
+                    Application.Exit();
+                    return;
+                }
+            }
+            base.OnFormClosing(e);
         }
     }
 }
