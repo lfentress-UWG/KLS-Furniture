@@ -13,19 +13,40 @@ namespace KLS_Furniture.Controller
     /// </summary>
     public class MemberManagementController
     {
-        private readonly MemberManagementDBDAL memberMangagementDAL;
+        private readonly MemberManagementDBDAL _memberMangagementDAL;
 
+        /// <summary>
+        /// Base contructor for MemberManagementController
+        /// Initializes DAL instance
+        /// </summary>
         public MemberManagementController()
         {
-            this.memberMangagementDAL = new MemberManagementDBDAL();
+            this._memberMangagementDAL = new MemberManagementDBDAL();
         }
 
+        /// <summary>
+        /// Adds a new member via DAL
+        /// </summary>
         public Member AddMember(Member newMember) 
         {
             if (newMember == null)
                 throw new ArgumentNullException(nameof(newMember));
             
-            return memberMangagementDAL.AddMember(newMember);
+            return _memberMangagementDAL.AddMember(newMember);
+        }
+
+        /// <summary>
+        /// Updates an existing member via DAL
+        /// </summary>
+        public Member UpdateMember(Member updateMember)
+        {
+            if (updateMember == null)
+                throw new ArgumentNullException(nameof(updateMember));
+
+            if (updateMember.MemberId < 0)
+                throw new ArgumentException("Valid MemberId is required for update.", nameof(updateMember));
+
+            return _memberMangagementDAL.UpdateMember(updateMember);
         }
     }
 }

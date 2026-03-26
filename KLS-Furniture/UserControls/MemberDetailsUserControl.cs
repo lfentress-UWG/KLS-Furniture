@@ -1,10 +1,11 @@
-﻿using KLS_Furniture.Utils;
+﻿using KLS_Furniture.Controller;
+using KLS_Furniture.Model.Entities;
+using KLS_Furniture.Utils;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using System.Drawing;
 using System.Windows.Forms;
-using KLS_Furniture.Model.Entities;
-using KLS_Furniture.Controller;
 
 
 namespace KLS_Furniture.UserControls
@@ -34,6 +35,24 @@ namespace KLS_Furniture.UserControls
             this.SaveMemberButton.Enabled = false;
             this.BindUpdateClears();
 
+
+            //Temp populates member on load for edit testing
+            //ToDo: Remove this after search implement
+            //this.DisplayMember(new Member
+            //{
+            //    MemberId = 10006,
+            //    FirstName = "Joe",
+            //    LastName = "Nameth",
+            //    Phone = "0123456789",
+            //    DateOfBirth = DateTime.Parse("2000-01-01"),
+            //    Sex = "M",
+            //    AddressLine1 = "Test Address",
+            //    AddressLine2 = "",
+            //    City = "Anywhere",
+            //    State = "GA",
+            //    ZipCode = "12345"
+            //});
+
         }
 
         /// <summary>
@@ -53,6 +72,7 @@ namespace KLS_Furniture.UserControls
             this.GenderComboBox.SelectedValue = member.Sex;
             this.AddressTextBox.Text = member.AddressLine1;
             this.AddLine2TextBox.Text = member.AddressLine2;
+            this.CityTextBox.Text = member.City;
             this.StateComboBox.SelectedValue = member.State;
             this.ZipTextBox.Text = member.ZipCode;
 
@@ -112,13 +132,11 @@ namespace KLS_Furniture.UserControls
                 if (_isEdit)
                 {
                     member.MemberId = _currentMemberID;
-                    // TODO: Implement Update Function
-                    // savedMember = _controller.UpdateMember(member);
+                    savedMember = _controller.UpdateMember(member);
                     message = "Member updated successfully!";
                 }
                 else
                 {
-                    // ADD NEW MEMBER
                     savedMember = _controller.AddMember(member);
                     _currentMemberID = savedMember.MemberId;
                     message = "New member added successfully!"; 
@@ -129,6 +147,8 @@ namespace KLS_Furniture.UserControls
                 MessageLabel.ForeColor = Color.Green;
                 this.EditMemberButton.Enabled = true;
                 this.SaveMemberButton.Enabled = false;
+                this.AddMemberButton.Enabled = true;
+                _isEdit = false;
             }
             catch (Exception ex)
             {
@@ -142,10 +162,14 @@ namespace KLS_Furniture.UserControls
         private void CancelMemberButton_Click(object sender, EventArgs e)
         {
             this.ClearLabels();
-            this.ClearInputs();
             this.DisableAllFields();
             this.AddMemberButton.Enabled = true;
             this.SaveMemberButton.Enabled = false;
+            if (_isEdit == false)
+            {
+                this.ClearInputs();
+                this._currentMemberID = -1;
+            }
             if (this._currentMemberID != -1)
             {
                 this.EditMemberButton.Enabled = true;
@@ -153,6 +177,8 @@ namespace KLS_Furniture.UserControls
             {
                 this.EditMemberButton.Enabled = false;
             }
+            
+            _isEdit = false;
         }
         #endregion
 
@@ -170,8 +196,8 @@ namespace KLS_Furniture.UserControls
         {
             this.GenderComboBox.DataSource = new[]
                 {
-                    new { Option = "Male",        Value = "M" },
-                    new { Option = "Female",      Value = "F" },
+                    new { Option = "Male", Value = "M" },
+                    new { Option = "Female", Value = "F" },
                     new { Option = "Unspecified", Value = "U" }
                 };
             this.GenderComboBox.DisplayMember = "Option";
