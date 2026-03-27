@@ -45,7 +45,7 @@ This is a group project repository. All team members have write access.
 
 See the Wiki for more details on the project plan.
 
-##Iteration 1
+## Iteration 1
 Username: jane
 Password: test1234
 
